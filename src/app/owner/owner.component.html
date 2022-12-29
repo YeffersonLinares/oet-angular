@@ -1,0 +1,68 @@
+<form action="">
+  <div class="row border p-3 mb-3">
+    <div class="col-12 text-center mb-3">
+      <h4><strong>Propietarios</strong></h4>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Cédula</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.document" name="document">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Primer nombre</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.first_name" name="first_name">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Segundo nombre</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.second_name" name="second_name">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Apellidos</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.last_name" name="last_name">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Dirección</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.address" name="address">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Teléfono</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.phone" name="phone">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Ciudad</label>
+      <input class="form-control" type="text" [(ngModel)]="owner.city" name="city">
+    </div>
+    <div class="col-12 d-flex justify-content-center mb-1">
+      <button class="btn btn-success" (click)="add_owner()">Guardar</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="table-responsive container-fluid">
+  <table class="table table-bordered table-striped d-table align-middle text-center">
+    <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Ciudad</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of owners; let index = index" [attr.data-index]="index">
+        <td>{{item.document}}</td>
+        <td>{{item.first_name + ' ' + item.second_name + ' ' + item.last_name }}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.city}}</td>
+        <td>
+          <div>
+            <button class="btn btn-warning" (click)="edit_owner(item, index)">Editar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

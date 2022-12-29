@@ -1,0 +1,74 @@
+<form action="">
+  <div class="row border p-3 mb-3">
+    <div class="col-12 text-center mb-3">
+      <h4><strong>Vehículos</strong></h4>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Placa</label>
+      <input class="form-control" type="text" [(ngModel)]="vehicle.plate" name="plate">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Color</label>
+      <input class="form-control" type="text" [(ngModel)]="vehicle.color" name="color">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Marca</label>
+      <input class="form-control" type="text" [(ngModel)]="vehicle.brand" name="brand">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Propietario</label>
+      <select class="form-select" [(ngModel)]="vehicle.owner_id" name="owner_id">
+        <option value="">Seleccione</option>
+        <option *ngFor="let item of owners" [ngValue]="item.id">{{item.first_name + ' ' + item.second_name + ' ' + item.last_name }}</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Conductor</label>
+      <select class="form-select" [(ngModel)]="vehicle.driver_id" name="driver_id">
+        <option value="">Seleccione</option>
+        <option *ngFor="let item of drivers" [ngValue]="item.id">{{item.first_name + ' ' + item.second_name + ' ' + item.last_name }}</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="">Tipo de vehículo</label>
+      <select class="form-select" [(ngModel)]="vehicle.type_vehicle_id" name="type_vehicle_id">
+        <option value="">Seleccione</option>
+        <option *ngFor="let item of type_vehicles" [ngValue]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <button class="btn btn-success" (click)="add_vehicle()">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<div class="table-responsive container-fluid">
+  <table class="table table-bordered table-striped d-table align-middle text-center">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Color</th>
+        <th>Marca</th>
+        <th>Propietario</th>
+        <th>Conductor</th>
+        <th>Tipo de vehículo</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of vehicles; let index = index" [attr.data-index]="index">
+        <td>{{item.plate}}</td>
+        <td>{{item.color}}</td>
+        <td>{{item.brand}}</td>
+        <td>{{item?.owner?.first_name + ' ' + item?.owner?.second_name + ' ' + item?.owner?.last_name}}</td>
+        <td>{{item?.driver?.first_name + ' ' + item?.driver?.second_name + ' ' + item?.driver?.last_name}}</td>
+        <td>{{item.type_vehicle.name}}</td>
+        <td>
+          <div>
+            <button class="btn btn-warning" (click)="edit_vehicle(item, index)">Editar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

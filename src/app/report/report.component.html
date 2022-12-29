@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Conductor</th>
+        <th>Propietario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of vehicles">
+        <td>{{item.plate}}</td>
+        <td>{{item.brand}}</td>
+        <td>{{item.driver.first_name}}</td>
+        <td>{{item.owner.first_name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
